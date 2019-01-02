@@ -5,3 +5,6 @@
 	新年快乐！
 	chapter4-1 在本地更新仓库代码，完成 chapter4-1 tee 题目 -- huowj from home
 
+2019-01-02
+	chapter4-1 完成一些工具函数 -- huowj from company
+
