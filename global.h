@@ -21,6 +21,18 @@ int option_iterator(
 	const OPTION *opt, void (*func)(const char *str_opt, const char *str_val));
 
 /*
+ * 只取数组的某一项
+ */
+int option_item(
+	const OPTION *opt, int index, void (*func)(const char *str_opt, const char *str_val));
+
+/*
+ * 获取数组的选项和值
+ */
+char * option_get_opt(const OPTION *opt, int index);
+char * option_get_val(const OPTION *opt, int index);
+
+/*
  * 释放数组
  */
 void option_free(OPTION *opt);

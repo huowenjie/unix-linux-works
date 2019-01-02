@@ -63,12 +63,10 @@ int option_iterator(
 	const OPTION *opt, void (*func)(const char *str_opt, const char *str_val))
 {
 	if (!opt) {
-		err_not_exit("OPTION is NULL!\n");
 		return FAILED;
 	}
 
 	if (!func) {
-		err_not_exit("Callback func is NULL!\n");
 		return FAILED;
 	}
 
@@ -79,6 +77,61 @@ int option_iterator(
 	}
 
 	return SUCCESS;
+}
+
+int option_item(
+	const OPTION *opt, int index, void (*func)(const char *str_opt, const char *str_val))
+{
+	int i = 0;
+
+	if (!opt) {
+		return FAILED;
+	}
+
+	if (!func) {
+		return FAILED;
+	}
+
+	const OPTION *opt_list = opt;
+	while (i++ <= index && (opt_list->opt || opt_list->val)) {
+		opt_list++;
+	}
+
+	func(opt_list->opt, opt_list->val);
+
+	return SUCCESS;
+}
+
+char * option_get_opt(const OPTION *opt, int index)
+{
+	int i = 0;
+
+	if (!opt) {
+		err_exit("null pointer!\n");
+	}
+
+	const OPTION *opt_list = opt;
+	while (i++ <= index && (opt_list->opt || opt_list->val)) {
+		opt_list++;
+	}
+
+	return opt_list->opt;
+}
+
+char * option_get_val(const OPTION *opt, int index)
+{
+	int i = 0;
+
+	if (!opt) {
+		err_exit("null pointer!\n");
+	}
+
+	const OPTION *opt_list = opt;
+	while (i++ <= index && (opt_list->opt || opt_list->val)) {
+		opt_list++;
+	}
+
+	return opt_list->val;
 }
 
 void option_free(OPTION *opt)
