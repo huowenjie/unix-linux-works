@@ -20,7 +20,7 @@
 /*
  * 缓冲区
  */
-static char buff[BUFF_LEN];
+static char buff[BUFF_LEN] = { 0 };
 
 /*
  * 当前的输出模式
@@ -62,7 +62,7 @@ void io_handle(int fd_in, int fd_out)
 	ssize_t num_rd = 0;
 
 	while ((num_rd = read(fd_in, buff, BUFF_LEN)) > 0) {
-		if (!strcmp(buff, "quit@quit\n")) {
+		if (!strncmp(buff, "quit@quit", 9)) {
 			break;
 		}
 

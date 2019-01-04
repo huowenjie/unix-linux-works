@@ -10,7 +10,7 @@ struct OPTION_st
 
 /*
  * 首先遍历参数，遇到 ‘-’ 开头的字符串则将之定义为 “选项” 保存，同时
- * 根据 next 变量判断是否是下一个参数选项和值，最后一个元素赋空。
+ * 根据 next 变量判断是否保存下一个参数选项和值，最后一个元素赋空。
  */
 OPTION * option_new(int num, char *argv[])
 {
@@ -93,7 +93,7 @@ int option_item(
 	}
 
 	const OPTION *opt_list = opt;
-	while (i++ <= index && (opt_list->opt || opt_list->val)) {
+	while (i++ < index && (opt_list->opt || opt_list->val)) {
 		opt_list++;
 	}
 
@@ -111,7 +111,7 @@ char * option_get_opt(const OPTION *opt, int index)
 	}
 
 	const OPTION *opt_list = opt;
-	while (i++ <= index && (opt_list->opt || opt_list->val)) {
+	while (i++ < index && (opt_list->opt || opt_list->val)) {
 		opt_list++;
 	}
 
@@ -127,7 +127,7 @@ char * option_get_val(const OPTION *opt, int index)
 	}
 
 	const OPTION *opt_list = opt;
-	while (i++ <= index && (opt_list->opt || opt_list->val)) {
+	while (i++ < index && (opt_list->opt || opt_list->val)) {
 		opt_list++;
 	}
 

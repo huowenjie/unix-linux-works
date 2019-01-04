@@ -1,8 +1,21 @@
+SUBDIRS := chapter4-1 chapter4-2
+
 global.o: global.c error-handle.h error-handle.o
 	gcc -g -c -Wall -std=c99 global.c
 error-handle.o: error-handle.c
 	gcc -g -c -Wall -std=c99 error-handle.c
 
-.PHONY:clean
+.PHONY: subdirs $(SUBDIRS)
+subdirs: $(SUBDIRS)
+$(SUBDIRS):
+	make -C $@
+
+.PHONY: subclean
+subclean:
+	for dir in $(SUBDIRS); do \
+		make -C $$dir clean; \
+	done
+
+.PHONY: clean
 clean:
 	rm -f *.o
