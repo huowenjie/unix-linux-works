@@ -3,6 +3,13 @@
 
 #define SUCCESS  0	// 成功
 #define FAILED  -1 	// 通用失败
+#define TRUE	 1
+#define FALSE	 0
+
+/*
+ * 定义布尔类型
+ */
+typedef int BOOLEAN;
 
 /*
  * 定义保存选项和值的结构

@@ -1,6 +1,8 @@
 #ifndef ERROR_HANDLE_H
 #define ERROR_HANDLE_H
 
+#include <errno.h>
+
 /*
  * 打印错误并终止程序
  */
