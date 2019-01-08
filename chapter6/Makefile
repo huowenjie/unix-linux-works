@@ -1,8 +1,10 @@
-all: fcntl-dup atomic-append append-work write-test readv-writev
+all: longjmp-work env-operate
 
-readv-writev: readv-writev.c ../error-handle.o ../global.o
+env-operate: env-operate.c ../error-handle.o ../global.o
+	gcc -g $^ -Wall  -o $@
+longjmp-work: longjmp-work.c ../error-handle.o ../global.o
 	gcc -g $^ -Wall -std=c99 -o $@
 
 .PHONY:clean
 clean:
-	rm -f *.o  
+	rm -f *.o longjmp-work env-operate 
