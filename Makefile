@@ -1,4 +1,4 @@
-SUBDIRS := chapter4-1 chapter4-2 chapter5
+SUBDIRS := chapter4-1 chapter4-2 chapter5 chapter6
 
 global.o: global.c error-handle.h error-handle.o
 	gcc -g -c -Wall -std=c99 global.c
