@@ -12,7 +12,7 @@ void err_exit(const char *format, ...)
 	fprintf(stderr, format, args);
 	va_end(args);
 
-	exit(0);
+	exit(-1);
 }
 
 void err_code_exit(int err_code)
