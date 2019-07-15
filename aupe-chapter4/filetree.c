@@ -45,8 +45,8 @@ int isvalid(const char *path)
 
 /**
  * 1.要检查当前要读取路径的有效性
- * 2.首先处理当前目录的情况，就要获取到当前目录的全路径
- * 3.获取到目标目录的全路径后，遍历该目录的文件列表
+ * 2.首先处理当前目录的情况，然后获取到当前目录的全路径
+ * 3.获取到目标目录的全路径后，调用 opendir,readdir 遍历该目录的文件列表
  * --遍历时遇到普通文件，通过 printf 输出
  * --遍历过程中遇到 dir 类型，递归执行 3
  */
@@ -58,10 +58,10 @@ int show_tree()
 {
 	struct stat buf = { 0 };
 	size_t cur_size = 0;
-	
+
 	struct dirent *dr = NULL;
 	DIR *dir = NULL;
-	
+
 	int ret = 0;
 	int i = 0;
 
@@ -79,7 +79,7 @@ int show_tree()
 		return 0;
 	}
 	
-	// 在目录后面加一个 /
+	// 拓展内存容量，然后在目录后面加一个 /
 	cur_size = strlen(NAME_BUFF.buff);
 	if (cur_size + NAME_MAX + 2 > NAME_BUFF.size) {
 		NAME_BUFF.size = cur_size + cur_size + NAME_MAX + 2;
