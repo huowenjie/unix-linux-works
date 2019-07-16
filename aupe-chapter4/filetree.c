@@ -100,7 +100,7 @@ int show_tree()
 	FILE_INFO.dir++;
 	
 	if ((dir = opendir(NAME_BUFF.buff)) == NULL) {
-		printf("Open dir error!\n");
+		printf("%s(no permission)\n", NAME_BUFF.buff);
 		return -1;
 	}
 	
@@ -133,7 +133,7 @@ int show_tree()
 		// 每遍历到一个文件，则重新执行本方法，同时要将文件名拼接
 		strcpy(&(NAME_BUFF.buff[cur_size]), dr->d_name);
 		if ((ret = show_tree()) != 0) {
-			break;				
+			break;
 		}
 
 		// 减少深度

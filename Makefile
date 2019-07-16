@@ -1,5 +1,6 @@
 SUBDIRS := aupe-chapter3 aupe-chapter4 aupe-chapter6 \
-		   aupe-chapter8 aupe-chapter9
+		   aupe-chapter8 aupe-chapter9 tlpi-chapter12 \
+		   tlpi-chapter13
 
 global.o: global.c error-handle.h error-handle.o
 	gcc -g -c -Wall -std=c99 global.c
