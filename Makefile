@@ -7,12 +7,17 @@ SUBDIRS := aupe-chapter3 aupe-chapter4 aupe-chapter6 \
 		   tlpi-chapter29-33 \
 		   tlpi-chapter34-36 \
 		   tlpi-chapter37-38 \
-		   tlpi-chapter41-42
+		   tlpi-chapter41-42 \
+		   tlpi-chapter56-61 \
+		   socket-chapter5 \
+		   socket-chapter6 \
+		   socket-chapter8 \
+		   socket-chapter26
 
 global.o: global.c error-handle.h error-handle.o
-	gcc -g -c -Wall -std=c99 global.c
+	gcc -g -c global.c
 error-handle.o: error-handle.c
-	gcc -g -c -Wall -std=c99 error-handle.c
+	gcc -g -c error-handle.c
 
 .PHONY: subdirs $(SUBDIRS)
 subdirs: $(SUBDIRS)
